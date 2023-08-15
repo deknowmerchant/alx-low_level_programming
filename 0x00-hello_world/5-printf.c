@@ -3,7 +3,8 @@
 /**
  * main - Entry point
  *
- * Description: Prints a specified string with proper grammar, followed by a new line.
+ * Description: Prints a specified string with proper grammar,
+ * followed by a new line.
  *
  * Return: Always 0 (Success)
  */
