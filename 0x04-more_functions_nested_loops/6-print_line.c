@@ -1,22 +1,22 @@
 #include "main.h"
 
 /**
- * more_numbers - Prints the numbers from 0 to 14 ten times, followed by a new line.
+ * print_line - Draws a straight line of underscores in the terminal.
+ * @n: The number of times the character '_' should be printed.
  */
-void more_numbers(void)
+void print_line(int n)
 {
-	int i, j;
+	int i;
 
-	for (i = 0; i < 10; i++)
+	if (n <= 0)
 	{
-		for (j = 0; j <= 14; j++)
-		{
-			if (j > 9)
-			{
-				_putchar(j / 10 + '0');
-			}
-			_putchar(j % 10 + '0');
-		}
 		_putchar('\n');
+		return;
 	}
+
+	for (i = 0; i < n; i++)
+	{
+		_putchar('_');
+	}
+	_putchar('\n');
 }
