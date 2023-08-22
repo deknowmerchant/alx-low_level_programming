@@ -2,32 +2,35 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define PASSWORD_LENGTH 8
-
+/**
+ * main - Generates random valid passwords for the program.
+ *
+ * Return: Always 0 (Success).
+ */
 int main(void)
 {
-    char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    int charset_length = sizeof(charset) - 1;
+    int pass[100];
+    int i, sum, n;
+
+    sum = 0;
 
     srand(time(NULL));
 
-    printf("Generated passwords:\n");
-
-    int i, j; // Declare loop variables here
-
-    for (i = 0; i < 10; i++)
+    for (i = 0; i < 100; i++)
     {
-        char password[PASSWORD_LENGTH + 1];
-
-        for (j = 0; j < PASSWORD_LENGTH; j++)
+        pass[i] = rand() % 78;
+        sum += (pass[i] + '0'); // Convert digit to ASCII
+        putchar(pass[i] + '0'); // Print the character representation of digit
+        if ((2772 - sum) - '0' < 78) // '0' should be '0' + 0
         {
-            int index = rand() % charset_length;
-            password[j] = charset[index];
+            n = 2772 - sum - '0'; // '0' should be '0' + 0
+            sum += n;
+            putchar(n + '0'); // Print the character representation of n
+            break;
         }
-
-        password[PASSWORD_LENGTH] = '\0';
-        printf("%s\n", password);
     }
 
-    return 0;
+    putchar('\n'); // Print a newline character at the end
+
+    return (0);
 }
