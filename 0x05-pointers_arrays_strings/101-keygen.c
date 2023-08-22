@@ -13,11 +13,13 @@ int main(void)
 
     printf("Generated passwords:\n");
 
-    for (int i = 0; i < 10; i++)
+    int i, j; // Declare loop variables here
+
+    for (i = 0; i < 10; i++)
     {
         char password[PASSWORD_LENGTH + 1];
-        
-        for (int j = 0; j < PASSWORD_LENGTH; j++)
+
+        for (j = 0; j < PASSWORD_LENGTH; j++)
         {
             int index = rand() % charset_length;
             password[j] = charset[index];
