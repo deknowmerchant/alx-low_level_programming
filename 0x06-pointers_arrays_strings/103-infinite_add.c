@@ -11,38 +11,40 @@
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int len1, len2, carry = 0, i;
-	int digit1, digit2, sum;
+    int len1, len2, carry = 0, sum;
+    int i = size_r - 2;  /* Leave room for the '\0' at the end */
 
-	for (len1 = 0; n1[len1] != '\0'; len1++)
-		;
-	for (len2 = 0; n2[len2] != '\0'; len2++)
-		;
+    for (len1 = 0; n1[len1] != '\0'; len1++)
+        ;
+    for (len2 = 0; n2[len2] != '\0'; len2++)
+        ;
 
-	if (len1 > size_r || len2 > size_r)
-		return (0);
+    if (len1 > size_r - 1 || len2 > size_r - 1)
+        return (0);
 
-	r[size_r] = '\0';
-	len1--;
-	len2--;
+    r[size_r - 1] = '\0';
+    len1--;
+    len2--;
 
-	for (i = size_r - 1; len1 >= 0 || len2 >= 0 || carry; i--)
-	{
-		digit1 = len1 >= 0 ? n1[len1] - '0' : 0;
-		digit2 = len2 >= 0 ? n2[len2] - '0' : 0;
-		sum = digit1 + digit2 + carry;
+    while (len1 >= 0 || len2 >= 0 || carry)
+    {
+        sum = carry;
 
-		r[i] = (sum % 10) + '0';
-		carry = sum / 10;
+        if (len1 >= 0)
+            sum += n1[len1] - '0';
+        if (len2 >= 0)
+            sum += n2[len2] - '0';
 
-		if (len1 >= 0)
-			len1--;
-		if (len2 >= 0)
-			len2--;
-	}
+        carry = sum / 10;
+        r[i] = (sum % 10) + '0';
 
-	if (i >= 0)
-		return (r + i + 1);
-	else
-		return (r);
+        i--;
+        len1--;
+        len2--;
+    }
+
+    if (i < 0)
+        return (0);
+
+    return (r + i + 1);
 }
