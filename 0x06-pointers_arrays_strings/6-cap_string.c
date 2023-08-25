@@ -3,19 +3,22 @@
 /**
  * cap_string - Capitalizes all words of a string.
  * @str: The input string.
- * 
+ *
  * Return: A pointer to the modified string.
  */
 char *cap_string(char *str)
 {
 	char *result = str;
-	int capitalize_next = 1; // Flag to indicate next character should be capitalized
+	int capitalize_next = 1;
 
 	while (*str != '\0')
 	{
-		if (*str >= 'a' && *str <= 'z' && capitalize_next)
+		if ((*str >= 'a' && *str <= 'z') || (*str >= 'A' && *str <= 'Z'))
 		{
-			*str = *str - ('a' - 'A'); // Convert lowercase to uppercase
+			if (capitalize_next && (*str >= 'a' && *str <= 'z'))
+			{
+				*str = *str - 'a' + 'A';
+			}
 			capitalize_next = 0;
 		}
 		else if (*str == ' ' || *str == '\t' || *str == '\n' ||
@@ -24,10 +27,6 @@ char *cap_string(char *str)
 				 *str == '(' || *str == ')' || *str == '{' || *str == '}')
 		{
 			capitalize_next = 1;
-		}
-		else
-		{
-			capitalize_next = 0;
 		}
 
 		str++;
