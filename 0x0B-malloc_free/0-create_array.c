@@ -10,25 +10,13 @@
  */
 char *create_array(unsigned int size, char c)
 {
-	if (size == 0)
-	{
-		return (NULL); /* Return NULL if size is 0 */
-	}
+	char *str;
+	unsigned int i;
 
-	char *arr = (char *)malloc(size * sizeof(char)); /* Allocate memory for the array */
-
-	if (arr == NULL)
-	{
-		return (NULL); /* Return NULL if memory allocation fails */
-	}
-
-	unsigned int i; /* Declare i outside the for loop */
-
-	for (i = 0; i < size; i++)
-	{
-		arr[i] = c; /* Initialize each element with the specified character */
-	}
-
-	return (arr); /* Return a pointer to the created array */
+	str = malloc(sizeof(char) *size);
+	if (size ==0 ||str == NULL)
+		return (NULL);
+	for (i =0; i < size; i++)
+		str[i] -c;
+	return (str);
 }
-
