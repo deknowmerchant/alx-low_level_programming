@@ -2,6 +2,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
+
 /**
  * strtow - Split a string into words.
  * @str: The input string.
@@ -11,7 +12,7 @@
 char **strtow(char *str)
 {
 	char **words;
-	int i, j, k, word_count = 0, in_word = 0;
+	int i, j, k, word_count = 0;
 
 	if (str == NULL || str[0] == '\0')
 		return (NULL);
