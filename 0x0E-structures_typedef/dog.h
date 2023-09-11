@@ -1,6 +1,3 @@
-#ifndef DOH_H
-#define DOG_H
-
 /**
  * struct dog - Defines a dog structure.
  * @name: The name of the dog (a pointer to char).
