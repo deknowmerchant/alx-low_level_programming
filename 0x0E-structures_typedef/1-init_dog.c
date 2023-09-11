@@ -1,5 +1,3 @@
-#include <stdlib.h>
-#include "dog.h"
 /**
  * init_dog - Initializes a struct dog.
  * @d: A pointer to the struct dog to initialize.
