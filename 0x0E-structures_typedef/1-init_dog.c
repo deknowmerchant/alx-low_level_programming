@@ -10,12 +10,11 @@
  */
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
-	/* Check if the pointer to struct dog is not NULL */
-	if (d != NULL)
-	{
-		/* Initialize the struct members with the provided values */
-		d->name = name;
-		d->age = age;
-		d->owner = owner;
-	}
+	if (d == NULL)
+		d = malloc(sizeof(struct dog));
+
+	d->name = name;
+	d->age = age;
+	d->owner = owner;
 }
+
